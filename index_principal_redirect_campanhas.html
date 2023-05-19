@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="https://vendas.planoclin.com.br/images/favicon.ico" type="image/x-icon">
+    <title>Tela de redirect Agiben</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-weight: normal;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            background: linear-gradient(135deg, rgba(26, 149, 128, 1) 0%, rgba(26, 149, 128, 1) 100%);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        html,
+        body {
+            background: linear-gradient(135deg, rgba(26, 149, 128, 1) 0%, rgba(26, 149, 128, 1) 100%);
+            font-family: "Montserrat", Arial;
+        }
+
+        .card {
+            position: absolute;
+            background-color: #F8F8F8;
+            border-radius: 1.5em;
+            min-width: 500px;
+            max-width: 1170px;
+            width: 30%;
+            padding: 2.6em 3.8em;
+            cursor: pointer;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            left: 40%;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1),
+                0 8px 8px rgba(0, 0, 0, 0.1),
+                0 16px 16px rgba(0, 0, 0, 0.1),
+                0 32px 32px rgba(0, 0, 0, 0.15),
+                0 64px 64px rgba(0, 0, 0, 0.15);
+        }
+
+        .note::after {
+            content: '';
+            width: 20%;
+            height: 2px;
+            border-radius: 999px;
+            background-color: #AFAFAF;
+            background: linear-gradient(135deg, rgba(26, 149, 128, 1) 0%, rgba(26, 149, 128, 1) 100%);
+            position: absolute;
+            top: -1.8em;
+            left: 0;
+        }
+
+        .note {
+            font-size: 0.8em;
+            color: #8A8A8A;
+            position: relative;
+            margin-top: 4em;
+        }
+
+        /* Scroller styling */
+        .scroller {
+            height: 1.2em;
+            line-height: 1.2em;
+            position: relative;
+            overflow: hidden;
+            width: 10em;
+        }
+
+        .scroller>span {
+            position: absolute;
+            top: 0;
+            /* animation: slide 5s; */
+            font-weight: bold;
+            animation: slide 10s infinite;
+
+        }
+
+
+        .spam {
+            font-size: medium;
+        }
+
+        @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+
+            .card {
+                position: absolute;
+                background-color: #F8F8F8;
+                border-radius: 1.5em;
+                min-width: 710px;
+                max-width: 700px;
+                width: 50%;
+                padding: 2.6em 3.8em;
+                cursor: pointer;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                left: 50%;
+                font-size: 22px;
+                height: 680px;
+
+            }
+
+            .spanSroll {
+                font-size: xx-large;
+
+
+            }
+
+            .note {
+                font-size: x-large;
+            }
+
+            .spam {
+                font-size: x-large;
+            }
+        }
+
+
+        @keyframes slide {
+            0% {
+                top: 0;
+            }
+
+            33% {
+                top: -1.8em;
+            }
+
+            66% {
+                top: -3.8em;
+            }
+
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        var queryString = new Array();
+
+        window.onload = function () {
+
+
+            if (queryString.length == 0) {
+
+
+                if (window.location.search.split('?').length > 1) {
+                    var urlCompleta = window.location.search + window.location.hash;
+                    var params = urlCompleta.split('?')[1].split('&');
+
+                    for (var i = 0; i < params.length; i++) {
+                        var key = params[i].split('=')[0];
+                        var value = decodeURIComponent(params[i].split('=')[1]);
+                        
+                        value = value.replace(/_/g, '#');
+                        queryString[key] = value;
+                    }
+                }
+            }
+            if (queryString["url"] != null && queryString["e"] != null) {
+
+                var empresa;
+
+                if (queryString["e"] === 'c' || queryString["e"] === 'C') {
+                    empresa = "Plano Odontológico CLIN"
+                } else if (queryString["e"] === 'm' || queryString["e"] === 'M') {
+                    empresa = "Melhor.ai"
+                }
+
+                var val = "<b>" + empresa + "</b>" + "<br> " + queryString["url"];
+                document.getElementById("lblredirect").innerHTML = val;
+
+                setInterval(function () {
+                    var div = document.querySelector("#counter");
+                    var count = div.textContent * 1 - 1;
+                    div.textContent = count;
+                    if (count <= 0) {
+                        window.location.replace(queryString["url"]);
+                    }
+                }, 1000);
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <span style="display: none" id="lblredirect"></span>
+
+    <div class="card">
+        <h1>Redirecionando para a Agiben (<a id="counter">3</a>)
+            <br /> <small class="spam" style=" padding-top: -100px">A nossa plataforma oficial de vendas</small>
+            <hr>
+            <!-- Scroller Start -->
+
+            <div class="scroller">
+                <span class="spanSroll">
+                    Carregando informações<br />
+                    Conectando com o parceiro<br />
+                    Entrando na Agiben
+                </span>
+            </div>
+
+            <!-- Scroller End -->
+        </h1>
+        <!-- <p>Redirecionando em:<a id="counter">10</a>  </p> -->
+        <p class="note">
+            Clin. Seu melhor sorriso, sempre.<br /><br />
+            <img height="50px" style="margin-left: -10px" src="https://vendas2.planoclin.com.br/img/logo-ortoclin2.png"
+                class="animated fadeInDown" alt="Plano Clin">
+        </p>
+
+
+
+
+        <!-- <div id="counter">5</div> -->
+    </div>
+</body>
+
+</html>

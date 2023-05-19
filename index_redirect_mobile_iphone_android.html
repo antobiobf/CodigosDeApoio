@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="0">
+
+	<script>
+
+		var isMobile = {
+			
+			iOS: function () {
+			
+				return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+			},
+			Android: function () {
+			
+				return navigator.userAgent.match(/Android/i);
+			},
+			BlackBerry: function () {
+				return navigator.userAgent.match(/BlackBerry/i);
+			},			
+			Opera: function () {
+				return navigator.userAgent.match(/Opera Mini/i);
+			},
+			Windows: function () {
+				return navigator.userAgent.match(/IEMobile/i);
+			},
+			any: function () {
+				document.location.href = "https://clin.digital";
+			}
+
+		};
+
+
+		if (isMobile.Android()) {
+		
+			document.location.href = "https://play.google.com/store/apps/details?id=clintech.clinapps.clincliente";
+		}
+		else if (isMobile.iOS()) {
+			
+			document.location.href = "https://apps.apple.com/br/app/clinapp-clientes/id1196293191";
+		}else{
+			document.location.href ="https://planoclin.com.br/";
+		}
+	</script>
+
+	<title>Redirect</title>
+</head>
+
+<body>
+	<!-- Note: don't tell people to `click` the link, just tell them that it is a link. -->
+Redirecionando para loja...
+</body>
+
+</html>

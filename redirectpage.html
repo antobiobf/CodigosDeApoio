@@ -1,0 +1,340 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        .jarallax-keep-img {
+            position: relative;
+            z-index: 0;
+        }
+
+        .jarallax-keep-img>.jarallax-img {
+            position: relative;
+            display: block;
+            max-width: 100%;
+            height: auto;
+            z-index: -100;
+            opacity: 0;
+        }
+
+
+        /* demo styles */
+        *,
+        *:after,
+        *:before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            font-size: 20px;
+            margin: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            color: #b6b7b9;
+            background-color: #000;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #f3f4f6;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
+        h2 {
+            font-size: 30px;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        p~p,
+        p~div {
+            margin-top: 15px;
+        }
+
+        small {
+            font-size: 80%;
+            opacity: 0.6;
+        }
+
+        a,
+        a:visited,
+        a:hover,
+        a:focus {
+            color: inherit;
+        }
+
+        a:hover,
+        a:focus {
+            color: #4f4f4f;
+        }
+
+        .jarallax {
+            min-height: 600px;
+        }
+
+        .jarallax-keep-img.demo-float-left {
+            margin-right: 15px;
+            margin-left: -60px;
+        }
+
+        .jarallax-keep-img.demo-float-right {
+            margin-left: 15px;
+            margin-right: -60px;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .jarallax-keep-img.demo-float-left,
+            .jarallax-keep-img.demo-float-right {
+                margin-right: 0;
+                margin-left: 0;
+                float: none;
+            }
+        }
+
+
+        /* Lighter background */
+        .lighter-bg {
+            background-color: #0f0f11;
+        }
+
+        /* hero block */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 500px;
+            height: calc(100vh - 220px);
+        }
+
+        .hero h1 {
+            font-size: 80px;
+            font-size: clamp(32px, 7.5vw, 80px);
+            max-width: 1200px;
+            margin: 0 auto;
+            line-height: 1;
+            letter-spacing: -0.01em;
+            font-weight: 800;
+        }
+
+        .hero.jarallax>.jarallax-img img,
+        .hero.jarallax>.jarallax-container img {
+            filter: blur(3px);
+        }
+
+        .hero-name {
+            font-size: 20px;
+            font-size: clamp(17px, 2vw, 20px);
+            font-weight: 300;
+            letter-spacing: 1.1em;
+            letter-spacing: clamp(1em, 2vw, 1.1em);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero+.demo-gap {
+            min-height: 230px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .jarallax>.jarallax-img,
+        .jarallax>.jarallax-container,
+        .jarallax-keep-img>.jarallax-container {
+            opacity: 0.5;
+        }
+
+        /* buttons */
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        *+.buttons {
+            margin-top: 20px;
+        }
+
+        a.button {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            padding: 12px;
+            border-radius: 4px;
+            min-width: 200px;
+            background-color: #fff;
+            color: #000;
+            transition: background-color .3s ease, transform .3s ease, box-shadow .3s ease;
+        }
+
+        a.button:hover,
+        a.button:focus {
+            background-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        a.button-outline {
+            background-color: transparent;
+            color: #fff;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+        a.button-outline:hover,
+        a.button-outline:focus {
+            background-color: transparent;
+            box-shadow: inset 0 0 0 1px #fff;
+        }
+
+        /* gap */
+        .demo-gap {
+            padding: 50px;
+            overflow: hidden;
+        }
+
+        .demo-gap h1,
+        .demo-gap h2,
+        .demo-gap h3 {
+            text-align: center;
+        }
+
+        .demo-gap .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Demo Content */
+        .demo-content {
+            padding: 80px;
+        }
+
+
+        /* Float */
+        .demo-float-left {
+            float: left;
+        }
+
+        .demo-float-right {
+            float: right;
+        }
+
+
+        /* Footer */
+        .footer {
+            text-align: center;
+        }
+
+
+        /* Mobile */
+        @media screen and (max-width: 500px) {
+
+            .demo-gap,
+            .demo-content {
+                padding: 50px 30px;
+            }
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/jarallax@2/dist/jarallax.min.js"></script>
+
+    <!-- <script>
+        function redirect() {
+            var interval = setInterval(myURL, 5000);
+            var result = document.getElementById("result");
+            result.innerHTML = "<b> The page will redirect after delay of 5 seconds setInterval() method.";
+        }
+    </script> -->
+
+
+    <script type="text/javascript">
+
+        var queryString = new Array();
+
+        window.onload = function () {
+
+            debugger
+            jarallax(document.querySelectorAll(".jarallax"));
+
+            if (queryString.length == 0) {
+                debugger
+                if (window.location.search.split('?').length > 1) {
+
+                    var urlCompleta = window.location.search + window.location.hash;
+                    var params = urlCompleta.split('?')[1].split('&');
+
+                    for (var i = 0; i < params.length; i++) {
+                        var key = params[i].split('=')[0];
+                        var value = decodeURIComponent(params[i].split('=')[1]);
+                        queryString[key] = value;
+                    }
+                }
+            }
+            if (queryString["url"] != null && queryString["e"] != null) {
+                var val = "<b>URL:</b> " + queryString["url"] + "<br> <b>EMPRESA:</b> " + queryString["e"];
+                document.getElementById("lblredirect").innerHTML = val;
+            }
+
+
+        };
+    </script>
+
+
+
+    <title>Redirect</title>
+</head>
+
+<body data-aos-easing="ease-out-quad" data-aos-duration="700" data-aos-delay="0">
+
+    <span id="lblredirect"></span>
+
+
+
+    <!-- WELCOME -->
+    <section data-jarallax data-speed=".8" class="pt-12 pb-10 pt-md-15 pb-md-14  jarallax">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-8 col-lg-6">
+
+                    <!-- Heading -->
+                    <h3 class="display-3 fw-bold text-white" style="font-size: 40px" id="welcomeHeadingSource">
+                        Uma plataforma, vários benefícios. <br />
+                        <span class="text-warning"
+                            data-typed='{"strings": ["Meidicina", "Odontologia", "Psicologia", "Seguros", "Assistências"]}'></span>
+                    </h3>
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+    </section>
+
+
+
+
+
+
+    <script type="text/javascript">
+        /* init Jarallax */
+
+
+
+    </script>
+
+</body>
+
+</html>

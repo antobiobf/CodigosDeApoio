@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8">
+
+
+	<script>
+
+
+	</script>
+
+	<title>Redirect</title>
+</head>
+
+<body>
+	Enter your name here:
+    <input type="text" id="textName" name="Name" value="JavaTpoint" /><br />
+    <br/>
+    Choose your prefered language:
+    <select id="ddlang" name="language">
+        <option value="C++">C++</option>
+        <option value="Java">Java</option>
+        <option value="Python">Python</option>
+        <option value="Javascript">Javascript</option>
+        <option value="Ruby">Ruby</option>
+    </select>
+    <br>
+    <br>
+    <input type="button" value="Submit" onclick="Submit()" />
+    <script type="text/javascript">
+        function Submit() {
+            var name = document.getElementById("textName").value;
+            var lang = document.getElementById("ddlang").value;
+            var url = "redirectpage.htm?name=" + encodeURIComponent(name) + "&language=" + encodeURIComponent(lang);
+            window.location.href = url;
+        };
+    </script>
+</body>
+
+</html>
